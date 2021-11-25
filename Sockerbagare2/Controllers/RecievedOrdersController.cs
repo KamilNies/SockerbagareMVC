@@ -20,9 +20,37 @@ namespace Sockerbagare2.Controllers
         }
 
         // GET: RecievedOrders
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "recievingdate" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var sockerbagare2Context = _context.RecievedOrders.Include(r => r.Ingredient).Include(r => r.Provider);
+            switch (sortOrder)
+            {
+                case "recievingdate":
+                    return View(await sockerbagare2Context.OrderBy(x => x.RecievingDate).ToListAsync());
+                case "ingredient":
+                    return View(await sockerbagare2Context.OrderBy(x => x.Ingredient.IngredientName).ToListAsync());
+                case "quantitykg":
+                    return View(await sockerbagare2Context.OrderBy(x => x.QuantityKg).ToListAsync());
+                case "manufacturingdate":
+                    return View(await sockerbagare2Context.OrderBy(x => x.ManufacturingDate).ToListAsync());
+                case "bestbeforedate":
+                    return View(await sockerbagare2Context.OrderBy(x => x.BestBeforeDate).ToListAsync());
+                case "provider":
+                    return View(await sockerbagare2Context.OrderBy(x => x.Provider.ProviderName).ToListAsync());
+                case "comments":
+                    return View(await sockerbagare2Context.OrderBy(x => x.Comments).ToListAsync());
+                default:
+                    break;
+            }
+
+            //return View(await sockerbagare2Context.OrderBy(x => x.ManufacturingDate).ToListAsync());
+            //return View(await sockerbagare2Context.OrderBy(x => x.RecievingDate).ToListAsync());
+            //return View(await sockerbagare2Context.OrderBy(x => x.BestBeforeDate).ToListAsync());
+            //return View(await sockerbagare2Context.OrderBy(x => x.QuantityKg).ToListAsync());
+            //return View(await sockerbagare2Context.OrderBy(x => x.Provider.ProviderName).ToListAsync());
+            //return View(await sockerbagare2Context.OrderBy(x => x.Ingredient.IngredientName).ToListAsync());
             return View(await sockerbagare2Context.ToListAsync());
         }
 

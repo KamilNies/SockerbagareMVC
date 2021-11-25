@@ -19,7 +19,8 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RecievingDate)
+                @Html.ActionLink("RecievingDate", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @*@Html.DisplayNameFor(model => model.RecievingDate)*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ingredient)
