@@ -22,25 +22,45 @@ namespace Sockerbagare2.Controllers
         // GET: RecievedOrders
         public async Task<IActionResult> Index(string sortOrder)
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "recievingdate" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.RecieveDateSort = sortOrder == "recievingdateDesc" ? "recievingdate" : "recievingdateDesc";
+            ViewBag.IngredientSort = sortOrder == "ingredientDesc" ? "ingredient" : "ingredientDesc";
+            ViewBag.QuantitySort = sortOrder == "quantitykgDesc" ? "quantitykg" : "quantitykgDesc";
+            ViewBag.ManuDateSort = sortOrder == "manufacturingdateDesc" ? "manufacturingdate" : "manufacturingdateDesc";
+            ViewBag.BestBeforeSort = sortOrder == "bestbeforedateDesc" ? "bestbeforedate" : "bestbeforedateDesc";
+            ViewBag.ProviderSort = sortOrder == "providerDesc" ? "provider" : "providerDesc";
+            ViewBag.CommentsSort = sortOrder == "commentsDesc" ? "comments" : "commentsDesc";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var sockerbagare2Context = _context.RecievedOrders.Include(r => r.Ingredient).Include(r => r.Provider);
             switch (sortOrder)
             {
                 case "recievingdate":
                     return View(await sockerbagare2Context.OrderBy(x => x.RecievingDate).ToListAsync());
+                case "recievingdateDesc":
+                    return View(await sockerbagare2Context.OrderByDescending(x => x.RecievingDate).ToListAsync());
                 case "ingredient":
                     return View(await sockerbagare2Context.OrderBy(x => x.Ingredient.IngredientName).ToListAsync());
+                case "ingredientDesc":
+                    return View(await sockerbagare2Context.OrderByDescending(x => x.Ingredient.IngredientName).ToListAsync());
                 case "quantitykg":
                     return View(await sockerbagare2Context.OrderBy(x => x.QuantityKg).ToListAsync());
+                case "quantitykgDesc":
+                    return View(await sockerbagare2Context.OrderByDescending(x => x.QuantityKg).ToListAsync());
                 case "manufacturingdate":
                     return View(await sockerbagare2Context.OrderBy(x => x.ManufacturingDate).ToListAsync());
+                case "manufacturingdateDesc":
+                    return View(await sockerbagare2Context.OrderByDescending(x => x.ManufacturingDate).ToListAsync());
                 case "bestbeforedate":
                     return View(await sockerbagare2Context.OrderBy(x => x.BestBeforeDate).ToListAsync());
+                case "bestbeforedateDesc":
+                    return View(await sockerbagare2Context.OrderByDescending(x => x.BestBeforeDate).ToListAsync());
                 case "provider":
                     return View(await sockerbagare2Context.OrderBy(x => x.Provider.ProviderName).ToListAsync());
+                case "providerDesc":
+                    return View(await sockerbagare2Context.OrderByDescending(x => x.Provider.ProviderName).ToListAsync());
                 case "comments":
                     return View(await sockerbagare2Context.OrderBy(x => x.Comments).ToListAsync());
+                case "commentsDesc":
+                    return View(await sockerbagare2Context.OrderByDescending(x => x.Comments).ToListAsync());
                 default:
                     break;
             }

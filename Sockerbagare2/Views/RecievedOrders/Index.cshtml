@@ -19,26 +19,32 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("RecievingDate", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("RecievingDate", "Index", new { sortOrder = ViewBag.RecieveDateSort })
                 @*@Html.DisplayNameFor(model => model.RecievingDate)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ingredient)
+                @Html.ActionLink("Ingredient", "Index", new { sortOrder = ViewBag.IngredientSort })
+                @*@Html.DisplayNameFor(model => model.Ingredient)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QuantityKg)
+                @Html.ActionLink("QuantityKg", "Index", new { sortOrder = ViewBag.QuantitySort })
+                @*@Html.DisplayNameFor(model => model.QuantityKg)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ManufacturingDate)
+                @Html.ActionLink("ManufacturingDate", "Index", new { sortOrder = ViewBag.ManuDateSort })
+                @*@Html.DisplayNameFor(model => model.ManufacturingDate)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BestBeforeDate)
+                @Html.ActionLink("BestBeforeDate", "Index", new { sortOrder = ViewBag.BestBeforeSort })
+                @*@Html.DisplayNameFor(model => model.BestBeforeDate)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Provider)
+                @Html.ActionLink("Provider", "Index", new { sortOrder = ViewBag.ProviderSort })
+                @*@Html.DisplayNameFor(model => model.Provider)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Comments)
+                @Html.ActionLink("Comments", "Index", new { sortOrder = ViewBag.CommentsSort })
+                @*@Html.DisplayNameFor(model => model.Comments)*@
             </th>
             <th></th>
         </tr>
