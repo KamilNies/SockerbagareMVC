@@ -19,31 +19,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BatchNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ManufacturingDate)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.RecievingDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BestBeforeDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryNumber)
+                @Html.DisplayNameFor(model => model.Ingredient)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.QuantityKg)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Comments)
+                @Html.DisplayNameFor(model => model.ManufacturingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BestBeforeDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Provider)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ingredient)
+                @Html.DisplayNameFor(model => model.Comments)
             </th>
             <th></th>
         </tr>
@@ -53,31 +47,25 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BatchNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ManufacturingDate)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.RecievingDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BestBeforeDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeliveryNumber)
+                    @Html.DisplayFor(modelItem => item.Ingredient.IngredientName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.QuantityKg)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Comments)
+                    @Html.DisplayFor(modelItem => item.ManufacturingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BestBeforeDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Provider.ProviderName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ingredient.IngredientName)
+                    @Html.DisplayFor(modelItem => item.Comments)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
