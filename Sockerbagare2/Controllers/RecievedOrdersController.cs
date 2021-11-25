@@ -29,8 +29,9 @@ namespace Sockerbagare2.Controllers
             ViewBag.BestBeforeSort = sortOrder == "bestbeforedateDesc" ? "bestbeforedate" : "bestbeforedateDesc";
             ViewBag.ProviderSort = sortOrder == "providerDesc" ? "provider" : "providerDesc";
             ViewBag.CommentsSort = sortOrder == "commentsDesc" ? "comments" : "commentsDesc";
-            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
             var sockerbagare2Context = _context.RecievedOrders.Include(r => r.Ingredient).Include(r => r.Provider);
+
             switch (sortOrder)
             {
                 case "recievingdate":
@@ -65,12 +66,6 @@ namespace Sockerbagare2.Controllers
                     break;
             }
 
-            //return View(await sockerbagare2Context.OrderBy(x => x.ManufacturingDate).ToListAsync());
-            //return View(await sockerbagare2Context.OrderBy(x => x.RecievingDate).ToListAsync());
-            //return View(await sockerbagare2Context.OrderBy(x => x.BestBeforeDate).ToListAsync());
-            //return View(await sockerbagare2Context.OrderBy(x => x.QuantityKg).ToListAsync());
-            //return View(await sockerbagare2Context.OrderBy(x => x.Provider.ProviderName).ToListAsync());
-            //return View(await sockerbagare2Context.OrderBy(x => x.Ingredient.IngredientName).ToListAsync());
             return View(await sockerbagare2Context.ToListAsync());
         }
 
